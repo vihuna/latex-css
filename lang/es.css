@@ -1,4 +1,12 @@
 :lang(es) .theorem::before { content: 'Teorema ' counter(theorem) '. ' !important; }
+:lang(es) .env-pars .theorem::before { content: none !important; }
+:lang(es) .env-pars .theorem p:first-child::before { content: 'Teorema ' counter(theorem) '. ' !important; }
 :lang(es) .lemma::before { content: 'Lema ' counter(theorem) '. ' !important; }
+:lang(es) .env-pars .lemma::before { content: none !important; }
+:lang(es) .env-pars .lemma p:first-child::before { content: 'Lema ' counter(theorem) '. ' !important; }
 :lang(es) .proof::before { content: 'Demostración. ' attr(title) !important; }
+:lang(es) .env-pars .proof::before { content: none !important; }
+:lang(es) .env-pars .proof p:first-child::before { content: 'Demostración. ' attr(title) !important; }
 :lang(es) .definition::before { content: 'Definición ' counter(definition) '. ' !important; }
+:lang(es) .env-pars .definition::before { content: none !important; }
+:lang(es) .env-pars .definition p:first-child::before { content: 'Definición ' counter(definition) '. ' !important; }

@@ -367,6 +367,14 @@ dl dd {
   font-weight: bold;
   font-style: normal;
 }
+.env-pars .theorem::before{
+  content: none;
+}
+.env-pars .theorem p:first-child::before {
+  content: 'Theorem ' counter(theorem) '. ';
+  font-weight: bold;
+  font-style: normal;
+}
 
 /* Lemma */
 .lemma {
@@ -376,6 +384,14 @@ dl dd {
   font-style: italic;
 }
 .lemma::before {
+  content: 'Lemma ' counter(theorem) '. ';
+  font-weight: bold;
+  font-style: normal;
+}
+.env-pars .lemma::before{
+  content: none;
+}
+.env-pars .lemma p:first-child::before {
   content: 'Lemma ' counter(theorem) '. ';
   font-weight: bold;
   font-style: normal;
@@ -399,6 +415,13 @@ dl dd {
   right: -12px;
   bottom: -2px;
 }
+.env-pars .proof::before {
+  content: none;
+}
+.env-pars .proof p:first-child::before {
+  content: 'Proof. ' attr(title);
+  font-style: italic;
+}
 
 /* Definition */
 .definition {
@@ -408,6 +431,14 @@ dl dd {
   font-style: normal;
 }
 .definition::before {
+  content: 'Definition ' counter(definition) '. ';
+  font-weight: bold;
+  font-style: normal;
+}
+.env-pars .definition::before {
+  content: none;
+}
+.env-pars .definition p:first-child::before {
   content: 'Definition ' counter(definition) '. ';
   font-weight: bold;
   font-style: normal;
