@@ -634,6 +634,9 @@ h6 {
     margin-left: 125.798pt;
     margin-right: 110.814pt;
     /* TODO: Top-Bottom margins */
+    @bottom-center{
+      content: counter(page);
+    } 
   }
 
   body {
