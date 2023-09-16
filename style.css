@@ -641,6 +641,9 @@ h6 {
     font-size: 0.913rem;
     /* One and half line spacing */
     line-height: 1.3;
+    max-width: none;
+    min-height: none;
+    padding: 0px;
   }
 
 /* CSS styles for screen-Paged.js, modified from Paged.js interface – v0.4 */
