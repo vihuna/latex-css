@@ -44,7 +44,7 @@
     </p>
   </div>
 
-  <nav role="navigation" class="toc">
+  <nav id="tableofcontents" role="navigation" class="toc">
     <h2>Contents</h2>
     <ol>
       <li><a href="#getting-started">Getting Started</a></li>
@@ -527,6 +527,28 @@
   </script>
 
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+  <!-- createToc javascript: -->
+  <script type="text/javascript" src="pagedjs/createToc.js"></script>
+
+  <!-- register handler beforeParsed() and call createToc script -->
+  <script >
+    class handlers extends Paged.Handler {
+      constructor(chunker, polisher, caller) {
+        super(chunker, polisher, caller);
+      }
+
+      beforeParsed(content){          
+        createToc({
+          content: content,
+          tocElement: '#tableofcontents',
+          titleElements: [ 'h2', 'h3', 'h4' ]
+        });
+      }
+     
+    }
+    Paged.registerHandlers(handlers);
+  </script>
 
   <script async defer data-domain="latex.now.sh" src="https://plausible.io/js/plausible.js"></script>
 </body>
