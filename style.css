@@ -646,6 +646,25 @@ h6 {
     padding: 0px;
   }
 
+  /* Fix sidenotes */
+  .sidenote {
+    font-size: 0.8rem;
+    /* This leaves 10pt margin between document text and sidenotes (like in 
+     * LaTeX-article-11pt). And ~ 20pt of blank right margin, as a safe printer margin
+     * (> 18pt).
+     * See: https://stackoverflow.com/questions/3503615/what-are-the-minimum-margins-most-printers-can-handle
+     */
+    width: 80pt;
+    margin-right: -90pt;
+  }
+  .sidenote.left {
+    float: left;
+    /* Same 10pt sep. with text because simmetry, this leaves 35pt of blank left margin */ 
+    margin-left: -90pt;
+    margin-bottom: 1em;
+  }
+}
+
 /* CSS styles for screen-Paged.js, modified from Paged.js interface – v0.4 */
 
 /* Change the look */
