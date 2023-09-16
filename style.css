@@ -618,3 +618,87 @@ h5,
 h6 {
   margin-bottom: 0.8rem;
 }
+
+/* Printable design with Paged.js
+ * Note: From version 4.0 onwards `@media screen` is removed when using Paged.js
+ */
+@media print {
+/* Test for A4 (595.276x841.89pt), 11pt-font size, 1.3-linespread. 
+ * Default Latex Article margins (converted to HTML points):
+ * - Full left margin: 125.798pt,
+ * - Full right margin: 110.814pt,
+ * - Document text width: 358.655pt ~ (595.276 - 125.798 -110.814)
+ */
+  @page {
+    size: A4 portrait;
+    margin-left: 125.798pt;
+    margin-right: 110.814pt;
+    /* TODO: Top-Bottom margins */
+  }
+
+  body {
+    /* ~ 11pt font-size */
+    font-size: 0.913rem;
+    /* One and half line spacing */
+    line-height: 1.3;
+  }
+
+/* CSS styles for screen-Paged.js, modified from Paged.js interface – v0.4 */
+
+/* Change the look */
+:root {
+  --color-background: whitesmoke;
+  --color-pageSheet: #cfcfcf;
+  --color-paper: white;
+}
+
+/* To define how the documet look on the screen: */
+@media screen, pagedjs-ignore {
+  body {
+    background-color: var(--color-background);
+  }
+
+  .pagedjs_pages {
+    margin: 0 auto;
+  }
+
+  .pagedjs_page {
+    background-color: var(--color-paper);
+    box-shadow: 0 0 0 1px var(--color-pageSheet);
+    margin-top: 10mm;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pagedjs_page:last-of-type {
+    margin-bottom: 10mm;
+  }
+
+  .pagedjs_pagebox{
+    box-shadow: 0 0 0 1px var(--color-pageBox);
+  }
+
+  /* show the margin-box */
+  .pagedjs_margin-top-left-corner-holder,
+  .pagedjs_margin-top,
+  .pagedjs_margin-top-left,
+  .pagedjs_margin-top-center,
+  .pagedjs_margin-top-right,
+  .pagedjs_margin-top-right-corner-holder,
+  .pagedjs_margin-bottom-left-corner-holder,
+  .pagedjs_margin-bottom,
+  .pagedjs_margin-bottom-left,
+  .pagedjs_margin-bottom-center,
+  .pagedjs_margin-bottom-right,
+  .pagedjs_margin-bottom-right-corner-holder,
+  .pagedjs_margin-right,
+  .pagedjs_margin-right-top,
+  .pagedjs_margin-right-middle,
+  .pagedjs_margin-right-bottom,
+  .pagedjs_margin-left,
+  .pagedjs_margin-left-top,
+  .pagedjs_margin-left-middle,
+  .pagedjs_margin-left-bottom {
+    box-shadow: 0 0 0 1px inset var(--color-marginBox);
+  }
+}

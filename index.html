@@ -486,9 +486,47 @@
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('latex-dark')
     })
+
+    // Avoid automathic highlight of the document
+    window.Prism = window.Prism || {};
+    Prism.manual = true;
   </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script async src="prism/prism.js"></script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="prism/prism.js"></script>
+
+  <script>
+    // Promise `MathJax.startup.promise` and function Prism.highlightAll() are used in this
+    // script; so no `async` nor `defer` in Mathjax and Prism load.
+    (() => {
+      // Prism.highlightAll() "promise" wrapper
+      function PrismHighlightAll(webworkers=false) {
+        const numItems = document.querySelectorAll('[class*=language-]').length;
+        let numItemsProcessed = 0;
+        return new Promise((resolve) => {
+          // setTimeout(() => {// Test a delay in Prism load
+            Prism.highlightAll(webworkers, (element) => {
+              numItemsProcessed++;
+              if (numItemsProcessed == numItems) {
+                resolve(element);
+                // console.log("- Prism Completed -"); // Test
+                // console.log("Numer of works processed: " + numItemsProcessed.toString());
+              }
+            });
+          // }, 5000);
+        });
+      };
+
+      // Paged.js config to start after Mathjax + Prism.js are fully loaded
+      window.PagedConfig = {
+        before: () => {
+          return MathJax.startup.promise.
+            then(() => {return PrismHighlightAll()});
+        },
+      };
+    })();
+  </script>
+
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
   <script async defer data-domain="latex.now.sh" src="https://plausible.io/js/plausible.js"></script>
 </body>
