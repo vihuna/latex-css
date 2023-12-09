@@ -18,7 +18,21 @@ if (location.hash) {
 (function() {
   const onLoadPromises = [];
   const removeImgLoading = this.removeImgLoading || true;
-  
+
+  /**
+   * Function to insert CSS rules to the HTML file with a `style` element in
+   * the header.
+   * @param {string} css - CSS rules to insert
+   * @param {string} [media] - One of the CSS media types: `screen`, `print`, ...
+   */
+  const addCssStyle = function(css, media='all') {
+    const head = document.getElementsByTagName('head')[0];
+    const styleTag = document.createElement('style');
+    styleTag.setAttribute('media', media);
+    styleTag.appendChild(document.createTextNode(css));
+    head.appendChild(styleTag);
+  }
+
   // Add promise when Mathjax is found
   if (typeof MathJax.typeset !== "undefined") {
     console.log("LatexCss: MathJax script found");
@@ -48,8 +62,26 @@ if (location.hash) {
         prismHighlightResolve(numCodeItemsProcessed);
       };
     });
-    
+
+    // Remove the Prism stylesheet and load it as a layer
+    const layerPrismPromise = new Promise(function(resolve) {
+      const head = document.getElementsByTagName('head')[0];
+      const cssLinks = head.getElementsByTagName('link');
+      let prismLinkRemoved = false;
+      for (const cssLink of cssLinks) {
+        const styleHref = cssLink.href.match('prism.css');
+        if (styleHref !== null) {
+          cssLink.remove();
+          prismLinkRemoved = true;
+        }
+      }
+      console.log('LatexCss: prismLinkRemoved = ', prismLinkRemoved);
+      const cssText = '@import url(prism/prism.css) layer(latexcss);';
+      resolve(addCssStyle(cssText));
+    });
+
     onLoadPromises.push(prismHighlightPromise);
+    onLoadPromises.push(layerPrismPromise);
   };
 
 

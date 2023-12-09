@@ -18,9 +18,20 @@
 
   <link rel="stylesheet" href="style-paged.css" />
   <link rel="stylesheet" href="prism/prism.css" />
+  <style>
+    /* Example: user customization colors for screen display */
+    @media screen, pagedjs-ignore {
+      :root {
+        --body-color: darkblue;
+      }
+      .latex-dark {
+        --body-color: lightblue;
+      }
+    }
+  </style>
 </head>
 
-<body id="top" class="toc-page-numbers">
+<body id="top" class="toc-page-numbers latex-dark">
   <header>
     <h1><span class="latex">L<span>a</span>T<span>e</span>X</span>.css Paged Layout</h1>
     <p class="author">
