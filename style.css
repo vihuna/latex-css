@@ -93,6 +93,14 @@
   src: url('./fonts/Libertinus-semibold-italic.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'LibertinusMono';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/LibertinusMono-Regular.woff2') format('woff2');
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -274,7 +282,7 @@ article > * + * {
 code,
 pre,
 kbd {
-  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  font-family: LibertinusMono, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   font-size: 85%;
 }

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>LaTeX.css Test — ToC Counters Fix</title>
+  <meta name="description" content="LaTeX.css test: ToC counters fix" />
+
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="stylesheet" href="../../../prism/prism.css" />
+  <link rel="stylesheet" href="../../../style-paged.css" />
+
+  <style>
+    @page {
+      margin-top: 90pt;
+      margin-right: 125pt;
+      margin-bottom: 90pt;
+      margin-left: 80pt;
+    }
+  </style>
+</head>
+
+<body id="top" class="toc-page-numbers sidenotes-outer">
+
+  <header>
+    <h1><span class="latex">L<span>a</span>T<span>e</span>X</span>.css Paged Layout</h1>
+    <p class="author">
+      Vincent Dörig <br />
+      May 2020
+    </p>
+  </header>
+
+  <div class="abstract">
+    <h2>Abstract</h2>
+    <p>
+      LaTeX.css is an almost class-less CSS library that turns your HTML document into a
+      website that looks like a
+      <span class="latex">L<span>a</span>T<span>e</span>X</span>
+      document. Write semantic HTML, add
+      <code class="language-html">&lt;link rel="stylesheet"
+          href="https://latex.now.sh/style.css"&gt;</code>
+      to the <code class="language-html">&lt;head&gt;</code> of your project and you are good to go.
+      The source code can be found on GitHub at
+      <a href="https://github.com/vincentdoerig/latex-css">https://github.com/vincentdoerig/latex-css</a>.
+    </p>
+    <p>
+      This is a paged CSS layout for LaTeX.css, using <a href="https://pagedjs.org">Paged.js</a>.
+      Both together display the document paginated in the screen, and allow to export it to PDF format
+      through the browser.
+    </p>
+  </div>
+
+  <nav role="navigation" class="toc" style="padding-top: 60pt;">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li>
+        <a href="#class-based-elements">Class-based Elements</a>
+        <ol>
+          <li><a href="#author-abstract">Author and Abstract</a></li>
+          <li>
+            <a href="#tdpl">Theorems, Definitions and Proofs</a>
+            <ol>
+              <li><a href="#proofs-theorems">Proofs & Theorems</a></li>
+              <li><a href="#lemmas">Lemmas</a></li>
+              <li><a href="#definitions">Definitions</a></li>
+            </ol>
+          </li>
+          <li><a href="#paragraphs">Paragraphs</a></li>
+        </ol>
+      </li>
+      <li><a href="#language-support">Language Support</a></li>
+      <li><a href="#sidenotes">Sidenotes</a></li>
+      <li><a href="#alternative-typeface">Alternative Typeface</a></li>
+      <li>
+        <a href="#html-elements">HTML Elements</a>
+        <ol>
+          <li><a href="#text-formatting"><span>Text Formatting</span></a></li>
+          <li><a href="#blockquotes">Blockquotes</a></li>
+          <li><a href="#definition-lists">Definition Lists</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#images">Images</a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#miscellaneous">Miscellaneous</a>
+        <ol>
+          <li><a href="#syntax-highlighting">Syntax Highlighting</a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#paged-layout">Paged Layout</a>
+        <ol>
+          <li><a href="#pagedjs-loading">Paged.js Loading</a></li>
+          <li><a href="#page-margins">Page Size and Margins</a></li>
+          <li><a href="#utility-classes">Utility Classes</a></li>
+          <li><a href="#pagedjs-tweaking">Paged.js Tweaking</a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+  <main>
+    <article>
+
+      <p style="padding-top: 25pt;">
+        Vivamus urna magna, blandit non est eu, dapibus mollis urna. Nulla
+        lacinia lectus accumsan nunc convallis semper. Nunc commodo odio vel
+        auctor luctus. Vivamus luctus erat eleifend, tempor ligula sit amet,
+        malesuada velit. Nulla facilisi. Curabitur ornare sit amet massa non
+        gravida. Mauris vitae vehicula nisl. Pellentesque ultrices et dui eu
+        posuere. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. Etiam maximus, dolor id efficitur
+        semper, nunc ligula malesuada mi, in vestibulum magna lacus tristique
+        velit. Phasellus quis condimentum dolor. Donec arcu dolor, viverra quis
+        elit feugiat, eleifend aliquet Lectus. Donec tincidunt justo ac velit
+        fringilla, euismod rhoncus orci varius. Nam vel mollis lorem.
+      </p>
+
+      <p>
+        Etiam non venenatis velit. Nam eu libero eu orci pellentesque
+        molestie. Sed dignissim massa in urna tempor cursus. Aliquam ac arcu
+        nunc. Pellentesque malesuada accumsan varius. Donec placerat mauris quis
+        augue vulputate semper. Phasellus risus ante, dictum gravida enim a,
+        faucibus eleifend nulla. Fusce tincidunt dui mi, rutrum rutrum libero
+        eleifend condimentum. Suspendisse vehicula luctus est, ac volutpat odio
+        semper sed. Suspendisse id libero ipsum. Curabitur et tortor at arcu
+        sodales fermentum sit amet at massa. In commodo tempus est quis
+        auctor. Quisque feugiat porta justo nec congue. Morbi congue nunc vitae
+        magna fringilla elementum. Nulla facilisi.
+      </p>
+
+    </article>
+  </main>
+
+  <script type="module">
+    window.PagedConfig = {
+      auto: false,
+    };
+    setTimeout(() => {
+      window.PagedPolyfill.preview();
+    }, 2000);
+  </script>
+  <script src="../../../src/index.js" type="module"></script>
+  <script defer src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <script type="module">
+    const getFirstLiAncestor = function(el) {
+      console.log(el);
+      while (el.tagName !== "LI") {
+        el = el.parentNode;
+      }
+      return el;
+    }
+    class FixTocPageBreak extends Paged.Handler {
+      constructor(chunker, polisher, caller) {
+        super(chunker, polisher, caller);
+      }
+
+      afterPageLayout(pageElement, page, breakToken) {
+        if (breakToken) {
+          const firstLiAncestor = getFirstLiAncestor(breakToken.node);
+          const firstLiAncestorRef = firstLiAncestor.dataset.ref;
+          const firstLiAncestorSource =
+                this.chunker.source.querySelector("[data-ref='" + firstLiAncestorRef + "']");
+          breakToken.node = firstLiAncestorSource;
+          const firstLiAncestorPage =
+                page.area.querySelector("[data-ref='" + firstLiAncestorRef + "']");
+          firstLiAncestorPage.remove();
+        }
+      }
+
+    }
+
+    Paged.registerHandlers(FixTocPageBreak);
+  </script>
+
+</body>
+</html>

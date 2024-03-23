@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>LaTeX.css Test — ToC Counters Fix</title>
+  <meta name="description" content="LaTeX.css test: ToC counters fix" />
+
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="stylesheet" href="../../../prism/prism.css" />
+  <link rel="stylesheet" href="../../../style-paged.css" />
+
+  <style>
+    @page {
+      margin-top: 90pt;
+      margin-right: 125pt;
+      margin-bottom: 90pt;
+      margin-left: 80pt;
+    }
+    nav > ol li::before {
+      content: "";
+      float: none;
+    }
+    nav > ol > li > a::before {
+      content: counter(sec-level-1);
+      font-weight: bold;
+      padding-right: 0.85rem;
+    }
+    nav > ol > li > ol > li > a::before {
+      content: counter(sec-level-1) '.' counter(sec-level-2);
+      padding-right: 0.85rem;
+    }
+    nav > ol > li > ol > li > ol > li > a::before {
+      content: counter(sec-level-1) '.' counter(sec-level-2) '.' counter(sec-level-3);
+      padding-right: 0.85rem;
+    }
+    
+  </style>
+</head>
+
+<body id="top" class="toc-page-numbers sidenotes-outer">
+
+  <main style="padding-top: 50pt;">
+    <article>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+        accumsan vel magna id vehicula. Quisque scelerisque a ante sed
+        semper. Aliquam felis velit, dapibus suscipit mi ut, imperdiet faucibus
+        eros. Suspendisse vel mattis lectus. Duis vitae porta ex, in blandit
+        velit. Donec tristique bibendum tincidunt. Duis eu leo mattis, euismod
+        nunc sit amet, scelerisque lorem. Ut ac tellus imperdiet, pellentesque
+        dui id, convallis elit. Nullam non ante ac quam sollicitudin
+        auctor. Praesent congue ex justo, ut egestas mauris feugiat congue. Duis
+        sagittis ante vel ex iaculis, eu venenatis leo auctor. Donec lectus
+        massa, egestas quis posuere in, faucibus et dui. In congue libero quis
+        lacinia scelerisque. Fusce accumsan, velit id commodo luctus, tortor
+        elit faucibus neque, eu gravida ligula diam vitae nisi. Aliquam
+        dignissim purus lobortis fringilla pretium.
+      </p>
+
+      <p>
+        Duis et interdum nulla, at hendrerit ipsum. Aenean non finibus
+        est. Mauris commodo odio in eros sollicitudin malesuada. Praesent
+        pretium libero vel sollicitudin mollis.  Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia curae; Praesent ut nunc
+        at risus finibus scelerisque. Pellentesque in congue dui.  Donec
+        eleifend, ex sed condimentum iaculis, lectus tortor posuere orci, sit
+        amet dapibus justo ex quis neque. Aliquam malesuada ligula quis lobortis
+        faucibus.  Curabitur dui libero, consequat at iaculis non, sollicitudin
+        a elit. Curabitur dignissim eros felis, a euismod ligula bibendum
+        a. Cras sit amet mauris vulputate urna semper aliquet.
+      </p>
+
+      <p style="padding-top: 25pt;">
+        Vivamus urna magna, blandit non est eu, dapibus mollis urna. Nulla
+        lacinia lectus accumsan nunc convallis semper. Nunc commodo odio vel
+        auctor luctus. Vivamus luctus erat eleifend, tempor ligula sit amet,
+        malesuada velit. Nulla facilisi. Curabitur ornare sit amet massa non
+        gravida. Mauris vitae vehicula nisl. Pellentesque ultrices et dui eu
+        posuere. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. Etiam maximus, dolor id efficitur
+        semper, nunc ligula malesuada mi, in vestibulum magna lacus tristique
+        velit. Phasellus quis condimentum dolor. Donec arcu dolor, viverra quis
+        elit feugiat, eleifend aliquet Lectus. Donec tincidunt justo ac velit
+        fringilla, euismod rhoncus orci varius. Nam vel mollis lorem.
+      </p>
+
+      <nav role="navigation" clas="toc">
+        <ol>
+          <li><a href"#">Lorem ipsum dolor sit amet</a></li>
+          <li><a href"#">Lorem ipsum dolor sit amet</a></li>
+          <li><a href"#">Lorem ipsum dolor sit amet</a></li>
+          <li><a href"#">Lorem ipsum dolor sit amet</a></li>
+          <li><a href"#">Lorem ipsum dolor sit amet</a></li>
+        </ol>
+      </nav>
+
+      <p>
+        Etiam non venenatis velit. Nam eu libero eu orci pellentesque
+        molestie. Sed dignissim massa in urna tempor cursus. Aliquam ac arcu
+        nunc. Pellentesque malesuada accumsan varius. Donec placerat mauris quis
+        augue vulputate semper. Phasellus risus ante, dictum gravida enim a,
+        faucibus eleifend nulla. Fusce tincidunt dui mi, rutrum rutrum libero
+        eleifend condimentum. Suspendisse vehicula luctus est, ac volutpat odio
+        semper sed. Suspendisse id libero ipsum. Curabitur et tortor at arcu
+        sodales fermentum sit amet at massa. In commodo tempus est quis
+        auctor. Quisque feugiat porta justo nec congue. Morbi congue nunc vitae
+        magna fringilla elementum. Nulla facilisi.
+      </p>
+
+    </article>
+  </main>
+
+
+  <script type="module">
+    window.PagedConfig = {
+      auto: false,
+    };
+    setTimeout(() => {
+      window.PagedPolyfill.preview();
+  }, 2000);
+  </script>
+  <script src="../../../src/index.js" type="module"></script>
+  <script defer src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+</body>
+</html>

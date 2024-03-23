@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>
+    LaTeX.css Test — Fix Miscalculation Remaining Space with Breaktoken inside
+    Code Block
+  </title>
+  <meta name="description" content="LaTeX.css test: fix miscalculation remaining space
+    with breaktoken inside block" />
+
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="stylesheet" href="../../../prism/prism.css" />
+  <link rel="stylesheet" href="../../../style-paged.css" />
+
+  <style>
+    @page {
+      margin-top: 90pt;
+      margin-right: 125pt;
+      margin-bottom: 90pt;
+      margin-left: 80pt;
+    }
+  </style>
+</head>
+
+<body id="top" class="toc-page-numbers sidenotes-outer">
+
+  <main style="padding-top: 50pt;">
+    <article>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+        accumsan vel magna id vehicula. Quisque scelerisque a ante sed
+        semper. Aliquam felis velit, dapibus suscipit mi ut, imperdiet faucibus
+        eros. Suspendisse vel mattis lectus. Duis vitae porta ex, in blandit
+        velit. Donec tristique bibendum tincidunt. Duis eu leo mattis, euismod
+        nunc sit amet, scelerisque lorem. Ut ac tellus imperdiet, pellentesque
+        dui id, convallis elit. Nullam non ante ac quam sollicitudin
+        auctor. Praesent congue ex justo, ut egestas mauris feugiat congue. Duis
+        sagittis ante vel ex iaculis, eu venenatis leo auctor. Donec lectus
+        massa, egestas quis posuere in, faucibus et dui. In congue libero quis
+        lacinia scelerisque. Fusce accumsan, velit id commodo luctus, tortor
+        elit faucibus neque, eu gravida ligula diam vitae nisi. Aliquam
+        dignissim purus lobortis fringilla pretium.
+      </p>
+
+      <p>
+        Duis et interdum nulla, at hendrerit ipsum. Aenean non finibus
+        est. Mauris commodo odio in eros sollicitudin malesuada. Praesent
+        pretium libero vel sollicitudin mollis. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia curae; Praesent ut nunc
+        at risus finibus scelerisque. Pellentesque in congue dui. Donec
+        eleifend, ex sed condimentum iaculis, lectus tortor posuere orci, sit
+        amet dapibus justo ex quis neque. Aliquam malesuada ligula quis lobortis
+        faucibus. Curabitur dui libero, consequat at iaculis non, sollicitudin
+        a elit. Curabitur dignissim eros felis, a euismod ligula bibendum
+        a. Cras sit amet mauris vulputate urna semper aliquet.
+      </p>
+
+      <p>
+        Vivamus urna magna, blandit non est eu, dapibus mollis urna. Nulla
+        lacinia lectus accumsan nunc convallis semper. Nunc commodo odio vel
+        auctor luctus. Vivamus luctus erat eleifend, tempor ligula sit amet,
+        malesuada velit. Nulla facilisi. Curabitur ornare sit amet massa non
+        gravida. Mauris vitae vehicula nisl. Pellentesque ultrices et dui eu
+        posuere. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. Etiam maximus, dolor id efficitur
+        semper, nunc ligula malesuada mi, in vestibulum magna lacus tristique
+        velit. Phasellus quis condimentum dolor. Donec arcu dolor, viverra quis
+        elit feugiat, eleifend aliquet lectus. Donec tincidunt justo ac velit
+        fringilla, euismod rhoncus orci varius. Nam vel mollis lorem.
+      </p>
+
+      <pre style="white-space: pre-wrap; overflow-wrap: normal; overflow: visible;" class="language-html"><code class="language-html" style="white-space: pre-wrap; overflow-wrap: normal; overflow: visible;"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  window<span class="token punctuation">.</span>PagedConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+    auto<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    window<span class="token punctuation">.</span>PagedPolyfill<span class="token punctuation">.</span><span class="token function">preview</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- Add optionally latexcss-paged.js (if you want some of the features it provides) --&gt;</span>
+<span class="token comment">&lt;!-- &lt;script src="https://latex.now.sh/latexcss-paged.js"&gt;&lt;/script&gt; --&gt;</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/pagedjs/dist/paged.polyfill.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+
+      <p>
+        Etiam non venenatis velit. Nam eu libero eu orci pellentesque
+        molestie. Sed dignissim massa in urna tempor cursus. Aliquam ac arcu
+        nunc. Pellentesque malesuada accumsan varius. Donec placerat mauris quis
+        augue vulputate semper. Phasellus risus ante, dictum gravida enim a,
+        faucibus eleifend nulla. Fusce tincidunt dui mi, rutrum rutrum libero
+        eleifend condimentum. Suspendisse vehicula luctus est, ac volutpat odio
+        semper sed. Suspendisse id libero ipsum. Curabitur et tortor at arcu
+        sodales fermentum sit amet at massa. In commodo tempus est quis
+        auctor. Quisque feugiat porta justo nec congue. Morbi congue nunc vitae
+        magna fringilla elementum. Nulla facilisi.
+      </p>
+
+    </article>
+  </main>
+
+  <!-- <script src="prism/prism.js"></script> -->
+  <script>
+    window.PagedConfig = {
+      auto: false,
+    };
+    setTimeout(() => {
+      window.PagedPolyfill.preview();
+    }, 1500);
+  </script>
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+  <script>
+    class fixCodeblockBreak extends Paged.Handler {
+      constructor(chunker, polisher, caller) {
+        super(chunker, polisher, caller);
+      }
+
+      beforeParsed(content) {
+        content.querySelectorAll("pre").forEach((el) => {
+          const sep = document.createElement("div");
+          sep.classList.add("separator");
+          el.before(sep);
+        });
+      }
+
+      renderNode(node, sourceNode, layout) {
+        if (node.tagName === "PRE" && layout.hasOverflow(node)) {
+          node.previousSibling.style.height = "20pt";
+        }
+      }
+
+      afterPageLayout(pageElement, page, breakToken) {
+        const sepList = pageElement.querySelectorAll(".separator");
+        sepList.forEach((el) => {
+          el.style.height = "0pt";
+        });
+      }
+
+    }
+    Paged.registerHandlers(fixCodeblockBreak);
+  </script>
+
+</body>
+</html>
