@@ -126,6 +126,9 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Ignore Lua formatter config file
+.stylua.toml
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged

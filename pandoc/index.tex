@@ -1,0 +1,534 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=3cm,marginparwidth=2cm]{geometry}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\lstset{basicstyle=\small\ttfamily,breaklines=true}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{3}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={LaTeX.css},
+  pdflang={en},
+  pdfkeywords={latex.css,css library,class-less css,latex css},
+  pdfcreator={LaTeX via pandoc}}
+\usepackage{amsthm}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\title{{L{a}T{e}X}.css}
+\author{Vincent Dörig\\
+May 2020}
+\date{}
+
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This almost class-less CSS library turns your HTML document into a
+website that looks like a {L{a}T{e}X} document. Write semantic HTML, add
+\lstinline!<link rel="stylesheet" href="https://latex.now.sh/style.css">!
+to the \lstinline!<head>! of your project and you are good
+to go. The source code can be found on GitHub at
+\url{https://github.com/vincentdoerig/latex-css}.
+\end{abstract}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{Getting Started}\label{getting-started}
+
+\begin{itemize}
+\item
+  Add
+  \lstinline!<link rel="stylesheet" href="https://latex.now.sh/style.css">!
+  to the \lstinline!<head>! of your website or install the
+  package using \lstinline!npm install latex.css!.
+\item
+  (optional) Add any classes to elements described in the
+  \hyperref[class-based-elements]{next section}.
+\item
+  (optional) Add dark mode by adding the
+  \lstinline!latex-dark-auto! class to the
+  \lstinline!<body>!. More infos
+  \hyperref[dark-mode]{here}.
+\item
+  (optional) If you need support for {L{a}T{e}X} math, add the following
+  script to include \href{https://www.mathjax.org/}{MathJax}:
+
+\begin{lstlisting}[language=HTML]
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+\end{lstlisting}
+\item
+  (optional) If you need syntax highlighting, add the following script
+  to include \href{https://prismjs.com/}{Prism} and the Prism LaTeX
+  stylesheet (or use any other):
+
+\begin{lstlisting}[language=HTML]
+<link rel="stylesheet" href="https://latex.now.sh/prism/prism.css">
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+\end{lstlisting}
+\item
+  Done.
+\end{itemize}
+
+\section{Class-based Elements}\label{class-based-elements}
+
+\subsection{Author and Abstract}\label{author-abstract}
+
+Use the following code to add an author and abstract to your document.
+It will look like \hyperref[top]{this}.
+
+\begin{lstlisting}[language=HTML]
+<p class="author">John Doe <br> December 7, 2020</p>
+
+<div class="abstract">
+  <h2>Abstract</h2>
+  <p>...</p>
+</div>
+\end{lstlisting}
+
+\subsection{Theorems, Definitions, Lemmas and Proofs}\label{tdpl}
+
+Theorems, definitions, lemmas and proofs are supported. Just wrap your
+content in a div and add the corresponding class to the element like in
+the following example.
+
+\begin{lstlisting}[language=HTML]
+<div class="theorem">...</div>
+<div class="definition">...</div>
+<div class="lemma">...</div>
+<div class="proof">...</div>
+\end{lstlisting}
+
+Below are some examples.
+
+\subsubsection{Proofs \& Theorems}\label{proofs-theorems}
+
+\begin{thm}
+
+The real numbers \(\mathbb{R}\) are uncountable.
+
+\end{thm}
+
+\begin{proof}
+
+If \(\mathbb{R}\) is countable, then {[}0, 1{]} is countable as well.
+Hence there exists a map C from \(\mathbb{N}\) onto {[}0, 1{]} with
+\[C(n)=\sum_{i=1}^{\infty} c_{i}(n) 10^{-i}\] where \(c_{i}(n)
+        \in\{0,1, \ldots, 9\},\) are the digits in decimal expansion.
+Now consider a real number \[x=\sum_{i=1}^{\infty} \bar{c}_{i} 10^{-i}
+        \in[0,1]\] with \(\bar{c}_{i} \neq c_{i}(i)\). Obviously
+\(C(n) \neq x\) for all \(n \in \mathbb{N} .\) Hence \(C\) is not onto.
+A contradiction.
+
+\end{proof}
+
+\begin{thm}
+
+If \(S\) is both countable and infinite, then there is a bijection
+between \(S\) and \(\boldsymbol{N}\)
+itself.\textsuperscript{\phantomsection\label{ref1}\hyperref[fn1]{1}}
+
+\end{thm}
+
+\begin{proof}
+
+For any \(s \in S,\) we let \(f(s)\) denote the value of \(k\) such that
+\(s\) is the \(k\) the smallest element of \(S .\) This map is well
+defined for any \(s,\) because there are only finitely many natural
+numbers between 1 and \(s .\) It is impossible for two different
+elements of \(S\) to both be the \(k\) the smallest element of \(S\).
+Hence \(f\) is one-to-one. Also, since \(S\) is infinite, \(f\) is onto.
+
+\end{proof}
+
+\subsubsection{Lemmas}\label{lemmas}
+
+\begin{lem}
+
+An even number plus an even number results in an even number.
+
+\end{lem}
+
+\subsubsection{Definitions}\label{definitions}
+
+\begin{dfn}
+
+A definition is a a statement of the meaning of a word or word group or
+a sign or
+symbol.\textsuperscript{\phantomsection\label{ref2}\hyperref[fn2]{2}}
+
+\end{dfn}
+
+\subsection{Paragraphs}\label{paragraphs}
+
+In order to get automatic first line indentation of paragraphs, like in
+default {L{a}T{e}X} articles, the class
+\lstinline!indent-pars! can be used with
+\lstinline!article! tag.
+
+\begin{lstlisting}[language=HTML]
+<article class="indent-pars">
+  ...
+</article>
+\end{lstlisting}
+
+The CSS style provided follows \lstinline!babel! specific
+language rules: by default, the first paragraph after a section title is
+not indented in English, unlike Spanish and French languages.
+
+To avoid first line indentation of some specific paragraph, the class
+\lstinline!no-indent! can be used.
+
+\begin{lstlisting}[language=HTML]
+<p class="no-indent">...</p>
+\end{lstlisting}
+
+\subsection{Table Classes}\label{table-classes}
+
+\subsubsection{Custom Table Borders}\label{table-borders}
+
+To add custom borders to the table, you should use the class
+\lstinline!borders-custom! with
+\lstinline!<table>! tag, to begin with a table without any
+border. The classes \lstinline!border-<position>-thin! and
+\lstinline!border-<position>-thick!, are available, where
+\lstinline!<position>! can take one of the values:
+\lstinline!top!, \lstinline!right!,
+\lstinline!bottom!, \lstinline!left!.
+
+\begin{lstlisting}[language=HTML]
+<table class="borders-custom ...">
+  <tr class="border-bottom-thick">
+    <td>...</td><td>...</td><td>...</td>
+  </tr>
+  <tr class="border-bottom-thin">
+    <td>...</td><td>...</td><td>...</td>
+  </tr>
+  ...
+\end{lstlisting}
+
+See full examples in the \hyperref[tables]{section about tables}.
+
+\subsubsection{Table Column Alignment}\label{table-column-aligment}
+
+For each column of the table, there is one class for left, center or
+right alignment, up to 12 columns: \lstinline!col-<n>-l!,
+\lstinline!col-<n>-c!,
+\lstinline!col-<n>-r!, \lstinline!n!=1,
+...,12. For example, a table with 3 columns using the following classes
+
+\begin{lstlisting}[language=HTML]
+<table class="col-1-l col-2-c col-3-r">
+  <tr>
+    <td>...</td><td>...</td><td>...</td>
+  </tr>
+  ...
+\end{lstlisting}
+
+aligns the first column to the left, centers the second one and aligns
+the third to the right.
+
+See full examples in the \hyperref[tables]{section about tables}.
+
+\section{Language Support}\label{language-support}
+
+The labels of theorems, definitions, lemmas and proofs can be changed to
+other
+\href{https://github.com/vincentdoerig/latex-css/tree/master/lang}{supported
+language} by including the following snippet, linking to the desired
+language in addition to the main CSS file.
+
+\begin{lstlisting}[language=HTML]
+<link rel="stylesheet" href="https://latex.now.sh/lang/es.css" />
+  ...
+<html lang="es">
+\end{lstlisting}
+
+Take a peek at the \href{/languages}{language support demo} to see how
+the labels of the different languages change.
+
+\section{Sidenotes}\label{sidenotes}
+
+Sidenotes can be used as an alternative to footnotes, where the user
+does not have to jump to the bottom of the page to read it. On mobile,
+click the superscript to reveal the notek\marginpar{\small {Yay,
+sidenotes!. If you are on mobile, I will appear inline. If you are using
+a larger screen, the sidenote will appear to the right of the text.}}.
+
+Sidenotes do need a little bit of setup, they are made up of a label, an
+invisible checkbox on top of the number and a span with the text inside.
+The superscript is set automatically and incremented using CSS when the
+checkbox has a class of \lstinline!sidenote-number!.
+
+\begin{lstlisting}[language=HTML]
+<label for="sn-1" class="sidenote-toggle sidenote-number"></label>
+<input type="checkbox" id="sn-1" class="sidenote-toggle" />
+<span class="sidenote"><!-- sidenote content --></span>
+\end{lstlisting}
+
+If you do not need superscripted numbers, you can opt out of the
+\lstinline!sidenote-number! class and the sidenote will
+not have a number assigned. On a smaller screen, you will need to add a
+symbol inside the \lstinline!label! for the user to click
+on. \marginpar{\small {This is a sidenote without a number.}}
+
+The snippet for a sidenote without a number is very similar:
+
+\begin{lstlisting}[language=HTML]
+<label for="sn-anything" class="sidenote-toggle">*</label>
+<input type="checkbox" id="sn-anything" class="sidenote-toggle" />
+<span class="sidenote"><!-- sidenote content --></span>
+\end{lstlisting}
+
+Add a class of \lstinline!left! to the span with the
+\lstinline!sidenote! class to make the note appear on the
+left side of the page on instead of right.
+
+The symbol you could use to indicate a sidenote is up to you. What about
+this notebook. \marginpar{\small {A notebook indicating a note. Aha.\\
+(if on a large screen, resize to mobile to see the emoji)}}
+
+\section{HTML Elements}\label{html-elements}
+
+For a preview of all HTML elements with LaTeX.css, check out the
+\href{/elements}{HTML5 elements test page}.
+
+\subsection{Text Formatting}\label{text-formatting}
+
+This sentence is \textbf{bold}. If you like semantics, you might go with
+\textbf{strong} or \emph{emphasized} text. If not, \emph{italic} is
+still around. {Small} text is for fine print. Your copy can also be
+\textsubscript{subscripted} and \textsuperscript{superscripted},
+\ul{inserted}, \st{deleted}, or \hl{highlighted}. You would use a
+\hyperref[ux21]{hyperlink} to go to a new page. Keyboard input elements
+like {Cmd} + {Shift} are used to display textual user input.
+
+\subsection{Blockquotes}\label{blockquotes}
+
+\begin{quote}
+Give me six hours to chop down a tree and I will spend the first four
+sharpening the axe. --- Abraham Lincoln
+\end{quote}
+
+\subsection{Definition Lists}\label{definition-lists}
+
+\begin{description}
+\tightlist
+\item[Definition Title One] First definition description
+\item[Binomial theorem]
+
+\[(x+y)^{n}=\sum_{k=0}^{n}\left(\begin{array}{l}n \\
+k\end{array}\right) x^{n-k}
+y^{k}=\sum_{k=0}^{n}\left(\begin{array}{l}n \\ k\end{array}\right)
+x^{k} y^{n-k}\]
+          
+\end{description}
+
+\subsection{Tables}\label{tables}
+
+% Tables have been simplified, because Pandoc LaTeX reader and writer don't
+% support all features from `longtable` and `multirow` packages.
+% Refs:
+% - https://github.com/jgm/pandoc/issues/6311
+% - https://github.com/jgm/pandoc/issues/6596
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{A sample table with a descriptive caption.}\tabularnewline
+\toprule\noalign{}
+Header 1 & Header 2 & Header 3 \\
+\midrule\noalign{}
+\endhead
+Description 1 & Description 2 & Description 3 \\
+Description 1 & Description 2 & Description 3 \\
+Description 1 & Description 2 & Description 3 \\
+\midrule\noalign{}
+Footer 1 & Footer 2 & Footer 3 \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Example table taken from
+\href{https://texdoc.org/serve/booktabs/0}{this paper} on how to produce
+quality tables with LaTeX.}\tabularnewline
+\toprule\noalign{}
+Animal & Description & Price (\$) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Gnat & per gram & 13.65 \\
+Gnu & stuffed & 92.50 \\
+Emu & stuffed & 33.33 \\
+Armadillo & frozen & 8.99 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Color names and values.}\tabularnewline
+\toprule\noalign{}
+Name & HEX & HSL & RGB \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Teal & \texttt{\#008080} & \texttt{hsl(180,\ 100\%,\ 25\%)} &
+\texttt{rgb(0,\ 128,\ 128)} \\
+Goldenrod & \texttt{\#daa520} & \texttt{hsl(43,\ 74\%,\ 49\%)} &
+\texttt{rgb(218,\ 165,\ 32)} \\
+Cornflowerblue & \texttt{\#6495ed} & \texttt{hsl(219,\ 79\%,\ 66\%)} &
+\texttt{rgb(100,\ 149,\ 237)} \\
+Lightcoral & \texttt{\#f08080} & \texttt{hsl(0,\ 79\%,\ 72\%)} &
+\texttt{rgb(240,\ 128,\ 128)} \\
+\end{longtable}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\caption{Example table with custom borders and aligment (De Morgan\textquotesingle s Law:
+\(\lnot P \lor \lnot Q \iff \lnot (P \land Q)\)).}\tabularnewline
+\toprule\noalign{}
+\(P\) & \(Q\) & \(\lnot P\) & \(\lnot Q\) & \(P \land Q\) &
+\(\lnot P \lor \lnot Q\) & \(\lnot (P \land Q)\)\\
+\midrule\noalign{}
+\\% an empty row is needed because multirow issues
+\multirow{2}{*}{T} & T & \multirow{2}{*}{F} & F & T & \textbf{F} &
+\textbf{F} \\
+& F & & T & F & \textbf{T} & \textbf{T} \\
+\multirow{2}{*}{F} & T & \multirow{2}{*}{T} & F & F & \textbf{T} &
+\textbf{T} \\
+& F & & T & F & \textbf{T} & \textbf{T} \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Close approaches to the Earth by NEOs.}\tabularnewline
+\toprule\noalign{}
+CA Date & Object Name & Diameter & Dist. Min. (LD) \\
+\midrule\noalign{}
+2023-Jul-10 & 2018 NW & 7.3m-16m & 0.287 \\
+2023-Jul-10 & 2023 LN1 & 45m-00m & 17.813 \\
+2023-Jul-11 & 2023 MD2 & 36m-80m & 5.570 \\
+2023-Jul-11 & 2023 NE & 32m-70m & 11.253 \\
+2023-Jul-11 & 2023 MQ1 & 28m-62m & 10.716 \\
+2023-Jul-12 & 2023 OM & 20m-46m & 7.628 \\
+2023-Jul-12 & 2018 UY & 190m-420m & 7.412 \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\subsection{Images}\label{images}
+
+\begin{figure}[!htp]
+\centering
+{[}{[}Insert here the remote image:https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format\&fit=crop\&w=1000\&q=80{]}{]}
+\caption{Mountain landscape by \href{https://unsplash.com/@heytowner}{John Towner}.}
+\end{figure}
+
+\section{Miscellaneous}\label{miscellaneous}
+
+\subsection{Syntax Highlighting}\label{syntax-highlighting}
+
+If you need syntax highlighting for code, LaTeX.css provides a
+\href{https://prismjs.com/}{PrismJS} theme that immitates the
+\href{https://github.com/gpoore/minted}{minted} package for LaTeX. Add
+the following stylesheet and script:
+
+\begin{lstlisting}[language=HTML]
+<link rel="stylesheet" href="https://latex.now.sh/prism/prism.css">
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+\end{lstlisting}
+
+And use it like this:
+
+\begin{lstlisting}[language=HTML]
+<pre>
+  <code class="language-html">
+    <!-- your HTML code snippet -->
+  </code>
+</pre>
+\end{lstlisting}
+
+Change which languages Prism highlights by customising the script
+\href{https://prismjs.com/download.html}{here}.
+
+\vspace{5pt}\rule{0.5\linewidth}{0.5pt}
+
+1. From \url{https://www.math.brown.edu/~res/MFS/handout8.pdf}.
+\hyperref[ref1]{\^{}}
+
+2. ``Definition.'' Merriam-Webster.com Dictionary, Merriam-Webster,
+\url{https://www.merriam-webster.com/dictionary/definition}. Accessed 18
+May. 2020. \hyperref[ref2]{\^{}}
+
+\end{document}

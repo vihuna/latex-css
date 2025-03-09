@@ -1,0 +1,11 @@
+reader: latex
+writer: html
+template: custom_template.html
+
+filters:
+  - latex2html_lcss.lua
+
+toc: true
+number-sections: true
+html-math-method:
+  method: mathjax

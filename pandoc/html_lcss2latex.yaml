@@ -1,0 +1,9 @@
+reader: html_lcss_reader.lua
+writer: latex
+template: custom_template.latex
+
+filters:
+  - html_lcss2latex.lua
+
+listings: true
+
